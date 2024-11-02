@@ -4,6 +4,15 @@
 #include <thread>
 #include <string>
 #include <fstream>
+#include <random>
+
+// Generowanie losowego UID
+std::string GenerateUID() {
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(100000, 999999);  // Zakres UID
+    return "UID-" + std::to_string(dis(gen));
+}
 
 std::wstring GetActiveWindowTitle() {
     wchar_t wnd_title[256];
@@ -32,7 +41,6 @@ void SendCommandToArduino(HANDLE hSerial, const std::string& command) {
     }
 }
 
-// power.uwu
 int ReadPowerLevel() {
     int power = 5;
     std::ifstream powerFile("power.uwu");
@@ -115,6 +123,10 @@ int main() {
 
     SetConsoleTitleA("fsb.cc - UwU Jitter");
     SetPriorityClass(GetCurrentProcess(), 0x00000080);
+
+    // Generowanie losowego UID przy starcie programu
+    std::string uid = GenerateUID();
+    std::cout << "Generated UID: " << uid << std::endl;
 
     std::cout << "\033[1;35m"
         << "   ___         __                             \n"
