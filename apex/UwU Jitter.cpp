@@ -11,7 +11,7 @@ std::string GenerateUID() {
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> dis(100000, 999999);  // Zakres UID
-    return "UID-" + std::to_string(dis(gen));
+    return "UID:" + std::to_string(dis(gen));
 }
 
 std::wstring GetActiveWindowTitle() {
@@ -67,7 +67,7 @@ void RecoilThread(HANDLE hSerial) {
         std::wstring currentWindowTitle = GetActiveWindowTitle();
         if (currentWindowTitle == L"Apex Legends") {
             if (!isGameActive) {
-                std::cout << "Recoil control activated! uwu~" << std::endl;
+                //std::cout << "Recoil control activated! uwu~" << std::endl;
                 isGameActive = true;
             }
 
@@ -84,7 +84,7 @@ void RecoilThread(HANDLE hSerial) {
         }
         else {
             if (isGameActive) {
-                std::cout << "Exited Apex Legends." << std::endl;
+                //std::cout << "Exited Apex Legends." << std::endl;
                 isGameActive = false;
             }
         }
@@ -105,15 +105,15 @@ void PowerInputThread() {
     bool firstPrompt = true;
     while (true) {
         if (firstPrompt) {
-            std::cout << "Enter power level (0-100): ";
+            std::cout << "Enter power level (0-6): ";
             firstPrompt = false;
         }
         std::cin >> power;
-        if (power >= 0 && power <= 100) {
+        if (power >= 0 && power <= 6) {
             SetPowerLevel(power);
         }
         else {
-            std::cout << "Invalid power level. Please enter a value between 0 and 100." << std::endl;
+            std::cout << "Invalid power level. Please enter a value between 0 and 6." << std::endl;
         }
     }
 }
@@ -126,7 +126,6 @@ int main() {
 
     // Generowanie losowego UID przy starcie programu
     std::string uid = GenerateUID();
-    std::cout << "Generated UID: " << uid << std::endl;
 
     std::cout << "\033[1;35m"
         << "   ___         __                             \n"
@@ -137,6 +136,10 @@ int main() {
         << "  \\ \\_\\ \\/\\____/ \\ \\_,__//\\_\\\\ \\____\\\\ \\____\\\n"
         << "   \\/_/  \\/___/   \\/___/ \\/_/ \\/____/ \\/____/ \n"
         << "\033[0m";
+    std::cout << "" << std::endl;
+    std::cout << "https://foreversadboys.ovh/" << std::endl;
+    std::cout << "" << std::endl;
+    std::cout << uid << " nya~" << std::endl;
 
     std::wstring serialPort = GetSerialPort();
     if (!serialPort.empty()) {
