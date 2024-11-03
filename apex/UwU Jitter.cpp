@@ -105,15 +105,15 @@ void PowerInputThread() {
     bool firstPrompt = true;
     while (true) {
         if (firstPrompt) {
-            std::cout << "Enter power level (0-6): ";
+            std::cout << "Enter power level (0-10): ";
             firstPrompt = false;
         }
         std::cin >> power;
-        if (power >= 0 && power <= 6) {
+        if (power >= 0 && power <= 10) {
             SetPowerLevel(power);
         }
         else {
-            std::cout << "Invalid power level. Please enter a value between 0 and 6." << std::endl;
+            std::cout << "Invalid power level. Please enter a value between 0 and 10." << std::endl;
         }
     }
 }
