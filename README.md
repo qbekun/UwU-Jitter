@@ -1,6 +1,6 @@
 # fsb.cc - UwU Jitter
 
-**fsb.cc - Uwu Jitter** is a super cute Jitter tool made just for players of Apex Legends, helping them to control the recoil of their weapons, nya~! This program lets users adjust the power level (0-6), allowing for precise management of recoil during intense gameplay. Thanks to advanced technology, fsb.cc can analyze in-game activity and automatically tweak settings, giving you the upper paw in competitions, uwu~!
+**fsb.cc - Uwu Jitter** is a super cute Jitter tool made just for players of Apex Legends, helping them to control the recoil of their weapons, nya~! This program lets users adjust the power level (0-10), allowing for precise management of recoil during intense gameplay. Thanks to advanced technology, fsb.cc can analyze in-game activity and automatically tweak settings, giving you the upper paw in competitions, uwu~!
 
 ## Features:
 - **Recoil Control:** Lets users customize the recoil level of their weapons, improving accuracy and shot effectiveness, yay~!
