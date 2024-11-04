@@ -6,7 +6,6 @@
 #include <fstream>
 #include <random>
 
-// Generowanie losowego UID
 std::string GenerateUID() {
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -124,7 +123,6 @@ int main() {
     SetConsoleTitleA("fsb.cc - UwU Jitter");
     SetPriorityClass(GetCurrentProcess(), 0x00000080);
 
-    // Generowanie losowego UID przy starcie programu
     std::string uid = GenerateUID();
 
     std::cout << "\033[1;35m"
