@@ -1,25 +1,25 @@
-# UwU Jitter - forever sad boys 💖
+# UwU Jitter - forever sad boys
 
-🌸✨ **Hewwo!** Wewcome to the **UwU Jittew** wepositowy, ouw wittle toow that adds some magic to youw gaming expewience! ✨🌸
+🌸✨ **Hello!** Welcome to the **UwU Jitter** repository, our cute little tool that adds some magic to your gaming experience! ✨🌸
 
-This fun pwogwam was wovingly cweated by the **forever sad boys** team, desiwgned to wowk with **Apex Legends**! It hewps you add a wittle bit of fun and cuteness to youw gamepway by contwowing **wecoiw** in the game using **Awduino**. 🌸🎮
+This fun program was lovingly created by the **forever sad boys** team, designed to work with **Apex Legends**! It helps you add a bit of fun and cuteness to your gameplay by controlling **recoil** in the game using **Arduino**. 🌸🎮
 
 ### What does it do? 🌟
-- **Automaticawwy modifies wecoiw** in **Apex Legends** based on set vawues.
-- Uses **sewiaw powt** commnication with Awduino (yes, it wowks with COM powts!).
-- Saves settings in wocaw configuwation fiwes (fow the twue pwofessionaw vibe!). ✨
+- **Automatically modifies recoil** in **Apex Legends** based on set values.
+- Uses **serial port** communication with Arduino (yes, it works with COM ports!).
+- Saves settings in local configuration files (for the true professional vibe!). ✨
 
-### Featuwes: 🎀
-- 🎮 Wecoiw Contwow (fow Apex Legends).
-- 🔌 Wemote contwow via **sewiaw powt**.
-- 💾 Save and woad settings fwom **powew.uwu**.
-- 🌈 Wots of cuteness and cweative chawwenges.
+### Features: 🎀
+- 🎮 Recoil Control (for Apex Legends).
+- 🔌 Remote control via **serial port**.
+- 💾 Save and load settings from **power.uwu**.
+- 🌈 Lots of cuteness and creative challenges.
 
-### InstaWWation 💖
-1. Downwoad.
-2. Set up youw Awduino to connect via **COM powt**.
-3. Wun the app and stawt having fun with **wecoiw contwow**! ✨
+### Installation 💖
+1. Download and clone the repository.
+2. Set up your Arduino to connect via **COM port**.
+3. Run the app and start having fun with **recoil control**! ✨
 
 ---
 
-We hope you have fun using **UwU Jittew**! Wishing you many **sweet** and magiwcal moments in-game! 😻🌸
+We hope you have fun using **UwU Jitter**! Wishing you many **sweet** and magical moments in-game! 😻🌸
