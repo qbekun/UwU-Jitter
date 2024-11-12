@@ -1,17 +1,25 @@
-# fsb.cc - UwU Jitter
+# UwU Jitter - Fowever Sad Boys 💖
 
-**fsb.cc - Uwu Jitter** is a super cute Jitter tool made just for players of Apex Legends, helping them to control the recoil of their weapons, nya~! This program lets users adjust the power level (0-10), allowing for precise management of recoil during intense gameplay. Thanks to advanced technology, fsb.cc can analyze in-game activity and automatically tweak settings, giving you the upper paw in competitions, uwu~!
+🌸✨ **Hewwo!** Wewcome to the **UwU Jittew** wepositowy, ouw wittle toow that adds some magic to youw gaming expewience! ✨🌸
 
-## Features:
-- **Recoil Control:** Lets users customize the recoil level of their weapons, improving accuracy and shot effectiveness, yay~!
-- **Automatic Settings:** The program automatically detects when you're playing Apex Legends, enabling Jitter functions at the right moments, hehe~!
-- **User Interface:** A simple interface makes it easy to input the power level in the console and displays helpful info messages, uwu~!
-- **Arduino Support:** The program communicates with an Arduino device, allowing direct control over power levels from within the game, so cool~!
+This fun pwogwam was wovingly cweated by the **Fowever Sad Boys** team, desiwgned to wowk with **Apex Legends**! It hewps you add a wittle bit of fun and cuteness to youw gamepway by contwowing **wecoiw** in the game using **Awduino**. 🌸🎮
 
-## Requirements:
-- **Arduino** (with the right software for serial communication, nya~!)
+### What does it do? 🌟
+- **Automaticawwy modifies wecoiw** in **Apex Legends** based on set vawues.
+- Uses **sewiaw powt** commnication with Awduino (yes, it wowks with COM powts!).
+- Saves settings in wocaw configuwation fiwes (fow the twue pwofessionaw vibe!). ✨
 
-## How to Use:
-1. Connect your Arduino and ensure it’s properly set up.
-2. Run **fsb.cc - Uwu Jitter** and input the desired power level when prompted.
-3. Enjoy better control of your weapon’s recoil in Apex Legends, nya~!
+### Featuwes: 🎀
+- 🎮 Wecoiw Contwow (fow Apex Legends).
+- 🔌 Wemote contwow via **sewiaw powt**.
+- 💾 Save and woad settings fwom **powew.uwu**.
+- 🌈 Wots of cuteness and cweative chawwenges.
+
+### InstaWWation 💖
+1. Downwoad.
+2. Set up youw Awduino to connect via **COM powt**.
+3. Wun the app and stawt having fun with **wecoiw contwow**! ✨
+
+---
+
+We hope you have fun using **UwU Jittew**! Wishing you many **sweet** and magiwcal moments in-game! 😻🌸
