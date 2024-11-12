@@ -121,6 +121,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\dev\serial\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

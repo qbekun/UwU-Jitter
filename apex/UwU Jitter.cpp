@@ -5,11 +5,13 @@
 #include <string>
 #include <fstream>
 #include <random>
+#include <conio.h>
+#include <shlobj.h> 
 
 std::string GenerateUID() {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dis(100000, 999999);  // Zakres UID
+    std::uniform_int_distribution<> dis(100000, 999999);
     return "UID:" + std::to_string(dis(gen));
 }
 
@@ -36,26 +38,34 @@ std::wstring GetSerialPort() {
 void SendCommandToArduino(HANDLE hSerial, const std::string& command) {
     DWORD bytesWritten;
     if (!WriteFile(hSerial, command.c_str(), command.size(), &bytesWritten, NULL)) {
-        std::cout << "Failed to write to Arduino!" << std::endl;
+        std::cout << "OwO Faiwud to wwite to Awduino! 😿" << std::endl;
     }
 }
 
 int ReadPowerLevel() {
     int power = 5;
-    std::ifstream powerFile("power.uwu");
-    if (powerFile.is_open()) {
-        powerFile >> power;
-        powerFile.close();
+    char appDataPath[MAX_PATH];
+    if (SUCCEEDED(SHGetFolderPathA(NULL, CSIDL_APPDATA, NULL, 0, appDataPath))) {
+        std::string filePath = std::string(appDataPath) + "\\fsb.cc\\apex\\power.uwu";
+        std::ifstream powerFile(filePath);
+        if (powerFile.is_open()) {
+            powerFile >> power;
+            powerFile.close();
+        }
     }
     return power;
 }
 
 void SetPowerLevel(int power) {
-    std::ofstream powerFile("power.uwu");
-    if (powerFile.is_open()) {
-        powerFile << power;
-        powerFile.close();
-        std::cout << "Power level set to: " << power << std::endl;
+    char appDataPath[MAX_PATH];
+    if (SUCCEEDED(SHGetFolderPathA(NULL, CSIDL_APPDATA, NULL, 0, appDataPath))) {
+        std::string filePath = std::string(appDataPath) + "\\fsb.cc\\apex\\power.uwu";
+        std::ofstream powerFile(filePath);
+        if (powerFile.is_open()) {
+            powerFile << power;
+            powerFile.close();
+            std::cout << "Jittew vawue set to: " << power << " OwO" << std::endl;
+        }
     }
 }
 
@@ -66,7 +76,6 @@ void RecoilThread(HANDLE hSerial) {
         std::wstring currentWindowTitle = GetActiveWindowTitle();
         if (currentWindowTitle == L"Apex Legends") {
             if (!isGameActive) {
-                //std::cout << "Recoil control activated! uwu~" << std::endl;
                 isGameActive = true;
             }
 
@@ -83,7 +92,6 @@ void RecoilThread(HANDLE hSerial) {
         }
         else {
             if (isGameActive) {
-                //std::cout << "Exited Apex Legends." << std::endl;
                 isGameActive = false;
             }
         }
@@ -99,82 +107,113 @@ void CreatePowerFile() {
     }
 }
 
-void PowerInputThread() {
-    int power;
-    bool firstPrompt = true;
-    while (true) {
-        if (firstPrompt) {
-            std::cout << "Enter power level (0-10): ";
-            firstPrompt = false;
+int LoadConfig() {
+    int power = 5;
+    char appDataPath[MAX_PATH];
+    if (SUCCEEDED(SHGetFolderPathA(NULL, CSIDL_APPDATA, NULL, 0, appDataPath))) {
+        std::string configPath = std::string(appDataPath) + "\\fsb.cc\\apex\\power.uwu";
+        std::ifstream configFile(configPath);
+        if (configFile.is_open()) {
+            configFile >> power;
+            configFile.close();
         }
-        std::cin >> power;
-        if (power >= 0 && power <= 10) {
-            SetPowerLevel(power);
+    }
+    return power;
+}
+
+void SaveConfig(int power) {
+    char appDataPath[MAX_PATH];
+    if (SUCCEEDED(SHGetFolderPathA(NULL, CSIDL_APPDATA, NULL, 0, appDataPath))) {
+        std::string configPath = std::string(appDataPath) + "\\fsb.cc\\apex\\power.uwu";
+        std::ofstream configFile(configPath);
+        if (configFile.is_open()) {
+            configFile << power << std::endl;
+            configFile.close();
+            std::cout << "Cwonfig saved! UwU" << std::endl;
         }
-        else {
-            std::cout << "Invalid power level. Please enter a value between 0 and 10." << std::endl;
+    }
+}
+
+void DisplayMenu(int& power) {
+    int choice = 0;
+    bool quit = false;
+
+    while (!quit) {
+        system("cls");
+
+        std::string uid = GenerateUID();
+        std::wstring serialPort = GetSerialPort();
+        std::cout << "\033[1;35m"
+            << "   ___         __                             \n"
+            << " /'___\\       /\\ \\                            \n"
+            << "/\\ \\__/   ____\\ \\ \\____        ___     ___   \n"
+            << "\\ \\ ,__\\ /',__\\\\ \\ '__\\      /'___\\  /'___\\ \n"
+            << " \\ \\ \\_//\\__, \\\\ \\ \\L\\ \\ __ /\\ \\__/ /\\ \\__/ \n"
+            << "  \\ \\_\\ \\/\\____/ \\ \\_,__//\\_\\\\ \\____\\\\ \\____\\\n"
+            << "   \\/_/  \\/___/   \\/___/ \\/_/ \\/____/ \\/____/ \n"
+            << "\033[0m";
+        std::cout << "" << std::endl;
+        std::cout << "https://foreversadboys.ovh/" << std::endl;
+        std::cout << "" << std::endl;
+        std::cout << uid << " nya~" << std::endl;
+        std::cout << "" << std::endl;
+
+        std::cout << (choice == 0 ? "> " : "  ") << "Jittew vawue: " << power << std::endl;
+        std::cout << (choice == 1 ? "> " : "  ") << "Save Cwonfig" << std::endl;
+        std::cout << (choice == 2 ? "> " : "  ") << "Load Cwonfig" << std::endl;
+
+        int ch = _getch();
+        if (ch == 224) {
+            ch = _getch();
+            if (ch == 72) {
+                if (choice > 0) choice--;
+            }
+            else if (ch == 80) {
+                if (choice < 2) choice++;
+            }
+            else if (ch == 75) {
+                if (choice == 0 && power > 0) {
+                    power--;
+                    SetPowerLevel(power);
+                }
+            }
+            else if (ch == 77) {
+                if (choice == 0 && power < 10) {
+                    power++;
+                    SetPowerLevel(power);
+                }
+            }
+        }
+        else if (ch == 13) {
+            switch (choice) {
+            case 0:
+                SetPowerLevel(power);
+                break;
+            case 1:
+                SaveConfig(power);
+                break;
+            case 2:
+                power = LoadConfig();
+                break;
+            }
         }
     }
 }
 
 int main() {
-    CreatePowerFile();
-
     SetConsoleTitleA("fsb.cc - UwU Jitter");
     SetPriorityClass(GetCurrentProcess(), 0x00000080);
+    int power = LoadConfig();
+    HANDLE hSerial = CreateFileW(GetSerialPort().c_str(), GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 
-    std::string uid = GenerateUID();
-
-    std::cout << "\033[1;35m"
-        << "   ___         __                             \n"
-        << " /'___\\       /\\ \\                            \n"
-        << "/\\ \\__/   ____\\ \\ \\____        ___     ___   \n"
-        << "\\ \\ ,__\\ /',__\\\\ \\ '__`\\      /'___\\  /'___\\ \n"
-        << " \\ \\ \\_//\\__, `\\\\ \\ \\L\\ \\ __ /\\ \\__/ /\\ \\__/ \n"
-        << "  \\ \\_\\ \\/\\____/ \\ \\_,__//\\_\\\\ \\____\\\\ \\____\\\n"
-        << "   \\/_/  \\/___/   \\/___/ \\/_/ \\/____/ \\/____/ \n"
-        << "\033[0m";
-    std::cout << "" << std::endl;
-    std::cout << "https://foreversadboys.ovh/" << std::endl;
-    std::cout << "" << std::endl;
-    std::cout << uid << " nya~" << std::endl;
-
-    std::wstring serialPort = GetSerialPort();
-    if (!serialPort.empty()) {
-        HANDLE hSerial = CreateFileW(serialPort.c_str(), GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-        if (hSerial != INVALID_HANDLE_VALUE) {
-            std::wcout << L"Connected to Arduino on port: " << serialPort << L" uwu~" << std::endl;
-
-            DWORD threadId;
-            HANDLE threadHandle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)RecoilThread, hSerial, 0, &threadId);
-            if (threadHandle == NULL) {
-                std::cout << "Failed to create thread!" << std::endl;
-                CloseHandle(hSerial);
-                return 1;
-            }
-
-            HANDLE inputThreadHandle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)PowerInputThread, NULL, 0, NULL);
-            if (inputThreadHandle == NULL) {
-                std::cout << "Failed to create input thread!" << std::endl;
-                CloseHandle(hSerial);
-                return 1;
-            }
-
-            for (;;) {
-                std::this_thread::sleep_for(std::chrono::milliseconds(1));
-            }
-
-            CloseHandle(hSerial);
-            CloseHandle(threadHandle);
-            CloseHandle(inputThreadHandle);
-        }
-        else {
-            std::wcout << L"Failed to open serial port!" << std::endl;
-        }
-    }
-    else {
-        std::wcout << L"No Arduino found on available ports. " << std::endl;
+    if (hSerial == INVALID_HANDLE_VALUE) {
+        std::cout << "OwO Faiwud to connect to sewiaw pownt! 😿" << std::endl;
+        return 1;
     }
 
-    return 0;
+    std::thread recoilThread(RecoilThread, hSerial);
+
+    DisplayMenu(power);
+
+    recoilThread.join();
 }
